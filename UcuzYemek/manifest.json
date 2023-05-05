@@ -1,0 +1,40 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+"manifest_version": 2,
+"content_security_policy": "script-src 'self' 'unsafe-eval' blob:; object-src 'self'",
+"name": "UcuzYemek",
+  "version": "2.0.0",
+  "description": "UcuzYemek.NET",
+  "icons": {
+    "128": "images/logo128.png"
+  },
+  "browser_action": {
+      "default_icon": "images/logo128.png",
+      "default_popup": "popup.html",
+      "default_title": "YemekSepeti"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.yemeksepeti.com/*",
+        "*://*.ucuzyemek.net/*"
+      ],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions":[
+		"cookies",
+    "<all_urls>",
+		"*://*/*",
+    "tabs",
+    "activeTab",
+    "proxy",
+    "background",
+    "storage",
+    "browsingData"
+  ]
+}
